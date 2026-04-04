@@ -2,7 +2,7 @@
 typealias Hesap = MutableMap<String, Any>
 
 // ─────────────────────────────────────────────────────────────
-// 1. hesapOlustur — yeni bir hesap kaydı döndürür
+// 1. hesapOlustur — yeni bir hesap oluşturur 
 // ─────────────────────────────────────────────────────────────
 fun hesapOlustur(id: String, sahip: String, baslangicBakiye: Double = 0.0): Hesap {
     require(baslangicBakiye >= 0) { "Başlangıç bakiyesi negatif olamaz." }
