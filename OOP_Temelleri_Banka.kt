@@ -224,56 +224,7 @@ object BankaSistemi {
 }
 
 
-// ============================================================
-// BÖLÜM 5 — DATA CLASS ve ENUM CLASS (Kotlin Özellikleri)
-// ============================================================
-//
-//  data class:
-//    Yalnızca veri taşımak için kullanılan özel sınıf türüdür.
-//    Kotlin otomatik olarak equals(), hashCode(), toString(),
-//    copy() metotlarını üretir.
-//
-//  enum class:
-//    Sabit değer kümelerini temsil eder; tip güvenliğini artırır.
-
-enum class HesapTuru {
-    VADESİZ, VADELİ, KREDİ, TASARRUF
-}
-
-enum class IslemTipi(val aciklama: String) {
-    PARA_YATIRMA("Para Yatırma"),
-    PARA_CEKME("Para Çekme"),
-    HAVALE("EFT/Havale"),
-    FAIZ("Faiz Tahakkuku")
-}
-
-data class IslemKaydi(
-    val hesapNo: String,
-    val tip: IslemTipi,
-    val tutar: Double,
-    val tarih: String,          // gerçek projede: LocalDateTime
-    val aciklama: String = ""
-) {
-    // data class içine metot da eklenebilir
-    fun ozet() = "[${tarih}] ${tip.aciklama}: $tutar TL | $aciklama"
-}
-
-
-// ============================================================
-// BÖLÜM 6 — EXTENSION FUNCTION (Kotlin'e Özgü)
-// ============================================================
-//
-//  Mevcut sınıflara kaynak kodunu değiştirmeden yeni metot ekler.
-//  OOP ilkelerini bozmadan sınıfı genişletmenin Kotlin yolu.
-
-fun BankaKullanicisi.tamAd(): String = "$ad $soyad"
-
-fun BankaKullanicisi.maskeliBakiye(): String {
-    return if (bakiye > 0) "***,*** TL" else "0,00 TL"
-}
-
-fun Double.tlFormatla(): String = String.format("%.2f TL", this)
-
+/
 
 // ============================================================
 // main — Tüm Kavramların Bir Arada Çalışması
@@ -344,8 +295,6 @@ fun main() {
     println("Maskelenmiş bakiye: ${kullanici1.maskeliBakiye()}")
     println("Formatlanmış tutar: ${kullanici1.bakiye.tlFormatla()}")
 
-    println("\n╔══════════════════════════════════════════╗")
-    println("║   DEMO TAMAMLANDI ✅                      ║")
-    println("╚══════════════════════════════════════════╝")
+
 }
 
